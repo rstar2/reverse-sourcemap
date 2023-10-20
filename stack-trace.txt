@@ -1,0 +1,16 @@
+[W] 18:56:17:704 [Controller]: : An internal application error has occurred: Global error: Uncaught TypeError: Cannot read properties of null (reading &#39;getData&#39;) Details: Global error: Uncaught TypeError: Cannot read properties of null (reading 'getData'), Stack:
+Error: An internal application error has occurred: Global error: Uncaught TypeError: Cannot read properties of null (reading &#39;getData&#39;) Details: Global error: Uncaught TypeError: Cannot read properties of null (reading 'getData')
+at CodeException.fromException (https://fileflex.subzwari.com:9443/serveradmin/static/03_024_0023/build/serveradmin_main.bundle.03_024_0023.js:204:1032379)
+at https://fileflex.subzwari.com:9443/serveradmin/static/03_024_0023/build/serveradmin_main.bundle.03_024_0023.js:204:1608231
+Caused by: Cannot read properties of null (reading 'getData'), Stack:
+TypeError: Cannot read properties of null (reading 'getData')
+at https://fileflex.subzwari.com:9443/serveradmin/static/03_024_0023/build/serveradmin_main.bundle.03_024_0023.js:204:1240606
+at https://fileflex.subzwari.com:9443/serveradmin/static/03_024_0023/build/serveradmin_main.bundle.03_024_0023.js:204:499072
+at Object.Rb (https://fileflex.subzwari.com:9443/serveradmin/static/03_024_0023/build/serveradmin_main.bundle.03_024_0023.js:204:660108)
+at Xb (https://fileflex.subzwari.com:9443/serveradmin/static/03_024_0023/build/serveradmin_main.bundle.03_024_0023.js:204:660271)
+at Yb (https://fileflex.subzwari.com:9443/serveradmin/static/03_024_0023/build/serveradmin_main.bundle.03_024_0023.js:204:678941)
+at Ze (https://fileflex.subzwari.com:9443/serveradmin/static/03_024_0023/build/serveradmin_main.bundle.03_024_0023.js:204:679037)
+at se (https://fileflex.subzwari.com:9443/serveradmin/static/03_024_0023/build/serveradmin_main.bundle.03_024_0023.js:204:679498)
+at https://fileflex.subzwari.com:9443/serveradmin/static/03_024_0023/build/serveradmin_main.bundle.03_024_0023.js:204:685547
+at Br (https://fileflex.subzwari.com:9443/serveradmin/static/03_024_0023/build/serveradmin_main.bundle.03_024_0023.js:204:764757)
+at Nb (https://fileflex.subzwari.com:9443/serveradmin/static/03_024_0023/build/serveradmin_main.bundle.03_024_0023.js:204:681071)
