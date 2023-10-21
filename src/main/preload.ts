@@ -1,4 +1,4 @@
-import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
+import { contextBridge, ipcRenderer, IpcRendererEvent } from "electron";
 
 // type-safe the allowed channels (e.g. event types)
 export type Channels = `ipc-${string}`;
@@ -29,6 +29,15 @@ const electronHandler = {
     },
 };
 
-contextBridge.exposeInMainWorld('electron', electronHandler);
+const versionsHandler = {
+    node: () => process.versions.node,
+    chrome: () => process.versions.chrome,
+    electron: () => process.versions.electron,
+    // we can also expose variables, not just functions
+};
+
+contextBridge.exposeInMainWorld("electron", electronHandler);
+contextBridge.exposeInMainWorld("versions", versionsHandler);
 
 export type ElectronHandler = typeof electronHandler;
+export type VersionsHandler = typeof versionsHandler;

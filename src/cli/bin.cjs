@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 
-const fs = require('node:fs');
-const minimist = require('minimist');
+const fs = require("node:fs");
+const minimist = require("minimist");
 
-const { convertAsync } = require('../lib/convert.cjs');
+const { convertAsync } = require("../lib/convert.cjs");
 
 const argv = minimist(process.argv.slice(2));
 
@@ -28,8 +28,8 @@ if (!fs.existsSync(s)) {
     process.exit(1);
 }
 
-const sourceMap = fs.readFileSync(s, 'utf-8');
-const input = fs.existsSync(i) ? fs.readFileSync(i, 'utf-8') : i;
+const sourceMap = fs.readFileSync(s, "utf-8");
+const input = fs.existsSync(i) ? fs.readFileSync(i, "utf-8") : i;
 
 (async () => {
     const result = await convertAsync(sourceMap, input, !o);
@@ -37,7 +37,7 @@ const input = fs.existsSync(i) ? fs.readFileSync(i, 'utf-8') : i;
     if (!o) return console.log(result);
 
     fs.writeFileSync(`${i}.result`, result, {
-        encoding: 'utf-8',
-        flag: 'w',
+        encoding: "utf-8",
+        flag: "w",
     });
 })();

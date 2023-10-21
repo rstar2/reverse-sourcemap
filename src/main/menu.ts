@@ -4,28 +4,28 @@ import {
     shell,
     BrowserWindow,
     MenuItemConstructorOptions,
-} from 'electron';
+} from "electron";
 
 type DarwinMenuItemConstructorOptions = MenuItemConstructorOptions & {
     selector?: string;
     submenu?: DarwinMenuItemConstructorOptions[] | Menu;
 };
 
-const helpPage = 'https://help.fileflex.com';
+const helpPage = "https://help.fileflex.com";
 
 function setupDevelopmentEnvironment(mainWindow: BrowserWindow) {
     if (
-        process.env.NODE_ENV !== 'development' &&
-        process.env.DEBUG_PROD !== 'true'
+        process.env.NODE_ENV !== "development" &&
+        process.env.DEBUG_PROD !== "true"
     )
         return;
 
-    mainWindow.webContents.on('context-menu', (_, props) => {
+    mainWindow.webContents.on("context-menu", (_, props) => {
         const { x, y } = props;
 
         Menu.buildFromTemplate([
             {
-                label: 'Inspect element',
+                label: "Inspect element",
                 click: () => {
                     mainWindow.webContents.inspectElement(x, y);
                 },
@@ -93,25 +93,25 @@ function buildDarwinTemplate(
     //     ],
     // };
     const subMenuViewDev: MenuItemConstructorOptions = {
-        label: 'View',
+        label: "View",
         submenu: [
             {
-                label: 'Reload',
-                accelerator: 'Command+R',
+                label: "Reload",
+                accelerator: "Command+R",
                 click: () => {
                     mainWindow.webContents.reload();
                 },
             },
             {
-                label: 'Toggle Full Screen',
-                accelerator: 'Ctrl+Command+F',
+                label: "Toggle Full Screen",
+                accelerator: "Ctrl+Command+F",
                 click: () => {
                     mainWindow.setFullScreen(!mainWindow.isFullScreen());
                 },
             },
             {
-                label: 'Toggle Developer Tools',
-                accelerator: 'Alt+Command+I',
+                label: "Toggle Developer Tools",
+                accelerator: "Alt+Command+I",
                 click: () => {
                     mainWindow.webContents.toggleDevTools();
                 },
@@ -119,11 +119,11 @@ function buildDarwinTemplate(
         ],
     };
     const subMenuViewProd: MenuItemConstructorOptions = {
-        label: 'View',
+        label: "View",
         submenu: [
             {
-                label: 'Toggle Full Screen',
-                accelerator: 'Ctrl+Command+F',
+                label: "Toggle Full Screen",
+                accelerator: "Ctrl+Command+F",
                 click: () => {
                     mainWindow.setFullScreen(!mainWindow.isFullScreen());
                 },
@@ -131,27 +131,27 @@ function buildDarwinTemplate(
         ],
     };
     const subMenuWindow: DarwinMenuItemConstructorOptions = {
-        label: 'Window',
+        label: "Window",
         submenu: [
             {
-                label: 'Minimize',
-                accelerator: 'Command+M',
-                selector: 'performMiniaturize:',
+                label: "Minimize",
+                accelerator: "Command+M",
+                selector: "performMiniaturize:",
             },
             {
-                label: 'Close',
-                accelerator: 'Command+W',
-                selector: 'performClose:',
+                label: "Close",
+                accelerator: "Command+W",
+                selector: "performClose:",
             },
-            { type: 'separator' },
-            { label: 'Bring All to Front', selector: 'arrangeInFront:' },
+            { type: "separator" },
+            { label: "Bring All to Front", selector: "arrangeInFront:" },
         ],
     };
     const subMenuHelp: MenuItemConstructorOptions = {
-        label: 'Help',
+        label: "Help",
         submenu: [
             {
-                label: 'FileFlex',
+                label: "FileFlex",
                 click() {
                     shell.openExternal(helpPage);
                 },
@@ -160,8 +160,8 @@ function buildDarwinTemplate(
     };
 
     const subMenuView =
-        process.env.NODE_ENV === 'development' ||
-        process.env.DEBUG_PROD === 'true'
+        process.env.NODE_ENV === "development" ||
+        process.env.DEBUG_PROD === "true"
             ? subMenuViewDev
             : subMenuViewProd;
 
@@ -175,11 +175,11 @@ function buildDarwinTemplate(
 function buildDefaultTemplate(mainWindow: BrowserWindow) {
     const templateDefault = [
         {
-            label: '&File',
+            label: "&File",
             submenu: [
                 {
-                    label: '&Close',
-                    accelerator: 'Ctrl+W',
+                    label: "&Close",
+                    accelerator: "Ctrl+W",
                     click: () => {
                         mainWindow.close();
                     },
@@ -187,21 +187,21 @@ function buildDefaultTemplate(mainWindow: BrowserWindow) {
             ],
         },
         {
-            label: '&View',
+            label: "&View",
             submenu:
-                process.env.NODE_ENV === 'development' ||
-                process.env.DEBUG_PROD === 'true'
+                process.env.NODE_ENV === "development" ||
+                process.env.DEBUG_PROD === "true"
                     ? [
                           {
-                              label: '&Reload',
-                              accelerator: 'Ctrl+R',
+                              label: "&Reload",
+                              accelerator: "Ctrl+R",
                               click: () => {
                                   mainWindow.webContents.reload();
                               },
                           },
                           {
-                              label: 'Toggle &Full Screen',
-                              accelerator: 'F11',
+                              label: "Toggle &Full Screen",
+                              accelerator: "F11",
                               click: () => {
                                   mainWindow.setFullScreen(
                                       !mainWindow.isFullScreen(),
@@ -209,8 +209,8 @@ function buildDefaultTemplate(mainWindow: BrowserWindow) {
                               },
                           },
                           {
-                              label: 'Toggle &Developer Tools',
-                              accelerator: 'Alt+Ctrl+I',
+                              label: "Toggle &Developer Tools",
+                              accelerator: "Alt+Ctrl+I",
                               click: () => {
                                   mainWindow.webContents.toggleDevTools();
                               },
@@ -218,8 +218,8 @@ function buildDefaultTemplate(mainWindow: BrowserWindow) {
                       ]
                     : [
                           {
-                              label: 'Toggle &Full Screen',
-                              accelerator: 'F11',
+                              label: "Toggle &Full Screen",
+                              accelerator: "F11",
                               click: () => {
                                   mainWindow.setFullScreen(
                                       !mainWindow.isFullScreen(),
@@ -229,10 +229,10 @@ function buildDefaultTemplate(mainWindow: BrowserWindow) {
                       ],
         },
         {
-            label: 'Help',
+            label: "Help",
             submenu: [
                 {
-                    label: 'FileFlex',
+                    label: "FileFlex",
                     click() {
                         shell.openExternal(helpPage);
                     },
@@ -248,7 +248,7 @@ export default function menuBuilder(mainWindow: BrowserWindow): Menu {
     setupDevelopmentEnvironment(mainWindow);
 
     const template =
-        process.platform === 'darwin'
+        process.platform === "darwin"
             ? buildDarwinTemplate(mainWindow)
             : buildDefaultTemplate(mainWindow);
 

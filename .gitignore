@@ -27,7 +27,7 @@ npm-debug.log.*
 release/app/dist
 release/build
 .erb/dll
-re-sourcemap-linux*
-re-sourcemap-win*
+
+release/cli
 
 

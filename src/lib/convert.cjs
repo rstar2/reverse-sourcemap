@@ -1,6 +1,6 @@
-const { SourceMapConsumer: asyncSourceMapConsumer } = require('source-map');
-const { SourceMapConsumer } = require('source-map-js');
-const chalk = require('chalk');
+const { SourceMapConsumer: asyncSourceMapConsumer } = require("source-map");
+const { SourceMapConsumer } = require("source-map-js");
+const chalk = require("chalk");
 
 const regex = /(\.js):(\d+):(\d+)\)?/gm;
 
@@ -12,7 +12,7 @@ const fnColors = [chalk.green, chalk.red, chalk.blue, chalk.yellow];
  * @param {string} sourceMap
  * @param {string} input
  * @param {boolean} colorize
- * @return {string}
+ * @return {Promise<string>}
  */
 module.exports.convertAsync = async function convertAsync(
     sourceMap,
@@ -67,14 +67,14 @@ function convert(consumer, input, colorize = false) {
         });
         // console.log(original);
 
-        original.source = original.source.replace('webpack://', '');
+        original.source = original.source.replace("webpack://", "");
         if (!colorize) return `${match} - ${JSON.stringify(original)}`;
 
         return `${match} - ${Object.entries(original)
             .map(([key, value], index) =>
                 chalk.bold(fnColors[index](`${key} : ${value}`)),
             )
-            .join(', ')}`;
+            .join(", ")}`;
     });
 
     return result;
